@@ -11,3 +11,8 @@ export const selectError = createSelector(
   (state) => state.deviations.error,
   (loadsError, deviationsError) => loadsError || deviationsError
 );
+
+export const selectStationsLoads = createSelector(
+  (state) => state.loads,
+  (loads) => loads.stationsLoads
+);

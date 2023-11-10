@@ -7,7 +7,7 @@ export default function Header() {
   const error = useSelector(selectError);
 
   return (
-    <Flex align="center" justify="space-between" pb={2}>
+    <Flex align="center" justify="space-between" p={2}>
       <Heading size="lg">Transport Dashboard</Heading>
       {error ? <Tag colorScheme="red">E</Tag> : isLoading ? <Spinner /> : null}
     </Flex>
