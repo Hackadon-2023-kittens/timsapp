@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import API from "../api";
 
 const initialState = { stationsLoads: [], isLoading: false, error: null };
