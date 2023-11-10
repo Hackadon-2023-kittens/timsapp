@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import { selectStationsLoads } from "../store/selectors";
-import { CircleMarker, Marker, Popup, Tooltip } from "react-leaflet";
-import { getColorForLoad } from "../utils";
+import StationMarker from "./StationMarker";
 
 export default function LoadMarkers() {
   const stationsLoads = useSelector(selectStationsLoads);
@@ -9,15 +8,12 @@ export default function LoadMarkers() {
   return (
     <>
       {stationsLoads.map((station) => (
-        <CircleMarker
-          pathOptions={{ color: getColorForLoad(station.load) }}
-          radius={10}
+        <StationMarker
           key={station.id}
-          center={[station.lat, station.lon]}
-        >
-          <Popup>{station.name}</Popup>
-          <Tooltip>{station.name}</Tooltip>
-        </CircleMarker>
+          station={station}
+          value={station.load}
+          label={`${station.load} People now`}
+        />
       ))}
     </>
   );

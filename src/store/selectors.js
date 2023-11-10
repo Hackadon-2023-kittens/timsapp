@@ -16,3 +16,13 @@ export const selectStationsLoads = createSelector(
   (state) => state.loads,
   (loads) => loads.stationsLoads
 );
+
+export const selectStationsDeviations = createSelector(
+  (state) => state.deviations,
+  (deviations) => deviations.stationsDeviations
+);
+
+export const selectSelectedStation = createSelector(
+  (state) => state.selectedStation,
+  (selectedStation) => selectedStation.selectedStation
+);

@@ -2,8 +2,8 @@ import { Box, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react";
 import Header from "./Header";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import Loads from "./Loads";
-import Delays from "./Delays";
 import { useEffect, useState } from "react";
+import Deviations from "./Deviations";
 
 const routes = ["/", "/deviations"];
 
@@ -21,14 +21,14 @@ export function Panel() {
       <Tabs onChange={(index) => setTabIndex(index)}>
         <TabList>
           <Tab>Loads</Tab>
-          <Tab>Delays</Tab>
+          <Tab>Deviations</Tab>
         </TabList>
         <TabPanels maxH="calc(100vh - 94px)" overflowY="scroll">
           <TabPanel>
             <Loads />
           </TabPanel>
           <TabPanel>
-            <Delays />
+            <Deviations />
           </TabPanel>
         </TabPanels>
       </Tabs>

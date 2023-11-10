@@ -1,10 +1,21 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import API from "../api";
 
-const initialState = { stationsLoads: [], isLoading: false, error: null };
+const initialState = {
+  stationsLoads: [],
+  isLoading: false,
+  error: null,
+};
 
-export const fetchLoads = createAsyncThunk("users/fetchLoads", async () =>
-  API.fetchLoads()
+export const fetchLoads = createAsyncThunk(
+  "users/fetchLoads",
+  async (_, { rejectWithValue }) => {
+    try {
+      return await API.fetchLoads();
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
 );
 
 const loadsSlice = createSlice({
@@ -27,5 +38,4 @@ const loadsSlice = createSlice({
     });
   },
 });
-
 export default loadsSlice.reducer;
