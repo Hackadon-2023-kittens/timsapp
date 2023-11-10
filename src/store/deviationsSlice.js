@@ -5,7 +5,13 @@ const initialState = { stationsDeviations: [], isLoading: false, error: null };
 
 export const fetchDeviations = createAsyncThunk(
   "users/fetchDeviations",
-  async () => API.fetchDeviations()
+  async () => {
+    try {
+      return await API.fetchDeviations();
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
 );
 
 const deviationsSlice = createSlice({

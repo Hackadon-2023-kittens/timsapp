@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import StationsList from "./StationsList";
@@ -9,9 +9,18 @@ import { fetchDeviations } from "../store/deviationsSlice";
 export default function Deviations() {
   const dispatch = useDispatch();
   const stationsDeviations = useSelector(selectStationsDeviations);
+  const intervalRef = useRef(null);
 
   useEffect(() => {
     dispatch(fetchDeviations());
+    if (intervalRef.current === null) {
+      intervalRef.current = setInterval(
+        () => dispatch(fetchDeviations()),
+        10000
+      );
+    }
+
+    return () => intervalRef.value !== null && clearInterval(intervalRef.value);
   }, []);
 
   return (
